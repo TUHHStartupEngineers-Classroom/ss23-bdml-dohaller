@@ -14,8 +14,8 @@ website:
         text: Home
       - text: "Journal"
         menu: 
-          - text: "01 Tidyverse"
-            file: content/01_journal/01_tidyverse.qmd
+          - text: "Challenge 1"
+            file: content/01_journal/Challenge1.qmd
           - text: "02 Data Acquisition"
             file: content/01_journal/02_data_acquisition.qmd
           - text: "03 Data Wrangling"
