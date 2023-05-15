@@ -6,3 +6,4 @@ author: "Dominik Haller"
 
 ![](assets/logo/TIE_logo.svg){width=80% fig-align="center"}
 
+Challenges can be found under the menu piint "Journal".
