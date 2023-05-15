@@ -16,12 +16,16 @@ website:
         menu: 
           - text: "Challenge 1"
             file: content/01_journal/Challenge1.qmd
-          - text: "02 Data Acquisition"
-            file: content/01_journal/02_data_acquisition.qmd
-          - text: "03 Data Wrangling"
-            file: content/01_journal/03_data_wrangling.qmd
-          - text: "04 Data Visualization"
-            file: content/01_journal/04_data_visualization.qmd
+          - text: "Challenge 2"
+            file: content/01_journal/Challenge2.qmd
+          - text: "Challenge 3"
+            file: content/01_journal/Challenge3.qmd
+          - text: "Challenge 4"
+            file: content/01_journal/Challenge4.qmd
+          - text: "Challenge 5"
+            file: content/01_journal/Challenge5.qmd
+          - text: "Challenge 6"
+            file: content/01_journal/Challenge6.qmd
       - text: "Class notes"
         file: content/02_notes/05_class_notes.qmd
       - text: "Links"

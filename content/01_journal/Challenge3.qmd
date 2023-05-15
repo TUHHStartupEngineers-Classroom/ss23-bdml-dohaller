@@ -1,0 +1,92 @@
+---
+title: "Challenge 3"
+author: "Dominik Haller"
+---
+```{r}
+require(tidyverse)
+require(GGally)
+#As I could not get plot_ggpairs to work I have used an alternate package GGally to plot pairs plots
+
+employee_attrition_tbl <- read_csv("~/GitHub/ss23-bdml-dohaller/code/dataset_employees.csv")
+```
+## Monthly Income
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, MonthlyIncome) %>% 
+  ggpairs()
+```
+We can deduce that those that are leaving are more likely to be the ones with lower income as seen in the upper right plot.
+Answer: C
+
+## Compensation Features
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, PercentSalaryHike) %>% 
+  ggpairs()
+```
+It is difficult to deduce anything from this plot. Answer: D
+
+## Stock Options
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, StockOptionLevel) %>% 
+  ggpairs()
+```
+It is difficult to deduce anything from this plot. Answer: D
+
+## Survey Results
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, EnvironmentSatisfaction) %>% 
+  ggpairs()
+```
+It is difficult to deduce anything from this plot. Although those with higher environment satisfaction may be more inclined to stay. Answer: A
+
+## Work Life Balance
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, WorkLifeBalance) %>% 
+  ggpairs()
+
+```
+It is difficult to deduce anything from this plot. Answer: D
+
+## Performance Data
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, JobInvolvement) %>% 
+  ggpairs()
+```
+It is difficult to deduce anything from this plot. Answer: D
+
+## Overtime
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, OverTime) %>% 
+  ggpairs()
+```
+It is difficult to deduce anything from this plot. Answer: D
+
+## Training and Education
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, TrainingTimesLastYear) %>% 
+  ggpairs()
+```
+It is difficult to deduce anything from this plot. Answer: D
+
+## Time Based Features
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, YearsAtCompany) %>% 
+  ggpairs()
+```
+Those with less years tend to leave or rather those with more years tend to stay. Answer: B
+
+## Time Based Features
+```{r}
+employee_attrition_tbl %>% 
+  select(Attrition, YearsSinceLastPromotion) %>% 
+  ggpairs()
+```
+It is difficult to deduce anything from this plot. Answer: D
