@@ -8,7 +8,7 @@
 
 <meta name="author" content="Dominik Haller">
 
-<title>MyLabJournal - Challenge 1</title>
+<title>MyLabJournal - Challenge 3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -179,14 +179,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#monthly-income" id="toc-monthly-income" class="nav-link active" data-scroll-target="#monthly-income"><span class="header-section-number">1</span> Monthly Income</a></li>
+  <li><a href="#compensation-features" id="toc-compensation-features" class="nav-link" data-scroll-target="#compensation-features"><span class="header-section-number">2</span> Compensation Features</a></li>
+  <li><a href="#stock-options" id="toc-stock-options" class="nav-link" data-scroll-target="#stock-options"><span class="header-section-number">3</span> Stock Options</a></li>
+  <li><a href="#survey-results" id="toc-survey-results" class="nav-link" data-scroll-target="#survey-results"><span class="header-section-number">4</span> Survey Results</a></li>
+  <li><a href="#work-life-balance" id="toc-work-life-balance" class="nav-link" data-scroll-target="#work-life-balance"><span class="header-section-number">5</span> Work Life Balance</a></li>
+  <li><a href="#performance-data" id="toc-performance-data" class="nav-link" data-scroll-target="#performance-data"><span class="header-section-number">6</span> Performance Data</a></li>
+  <li><a href="#overtime" id="toc-overtime" class="nav-link" data-scroll-target="#overtime"><span class="header-section-number">7</span> Overtime</a></li>
+  <li><a href="#training-and-education" id="toc-training-and-education" class="nav-link" data-scroll-target="#training-and-education"><span class="header-section-number">8</span> Training and Education</a></li>
+  <li><a href="#time-based-features" id="toc-time-based-features" class="nav-link" data-scroll-target="#time-based-features"><span class="header-section-number">9</span> Time Based Features</a></li>
+  <li><a href="#time-based-features-1" id="toc-time-based-features-1" class="nav-link" data-scroll-target="#time-based-features-1"><span class="header-section-number">10</span> Time Based Features</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Challenge 1</h1>
+<h1 class="title">Challenge 3</h1>
 </div>
 
 
@@ -207,197 +222,212 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="cell" data-hash="Challenge1_cache/html/unnamed-chunk-1_036a084b1200a802ac3ebd2b0b973add">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-1_29bbb611a986f39bc60ec22babccb807">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">require</span>(GGally)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#As I could not get plot_ggpairs to work I have used an alternate package GGally to plot pairs plots</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a>employee_attrition_tbl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"~/GitHub/ss23-bdml-dohaller/code/dataset_employees.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>#&gt; ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-#&gt; ✔ dplyr     1.1.1     ✔ readr     2.1.4
-#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.0
-#&gt; ✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-#&gt; ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-#&gt; ✔ purrr     1.0.1     
-#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#&gt; ✖ dplyr::filter() masks stats::filter()
-#&gt; ✖ dplyr::lag()    masks stats::lag()
-#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre><code>#&gt; Rows: 1470 Columns: 35
+#&gt; ── Column specification ────────────────────────────────────────────────────────
+#&gt; Delimiter: ","
+#&gt; chr  (9): Attrition, BusinessTravel, Department, EducationField, Gender, Job...
+#&gt; dbl (26): Age, DailyRate, DistanceFromHome, Education, EmployeeCount, Employ...
+#&gt; 
+#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.
+#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(tidyquant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; Lade nötiges Paket: PerformanceAnalytics
-#&gt; Lade nötiges Paket: xts
-#&gt; Lade nötiges Paket: zoo
-#&gt; 
-#&gt; Attache Paket: 'zoo'
-#&gt; 
-#&gt; Die folgenden Objekte sind maskiert von 'package:base':
-#&gt; 
-#&gt;     as.Date, as.Date.numeric
-#&gt; 
-#&gt; 
-#&gt; ######################### Warning from 'xts' package ##########################
-#&gt; #                                                                             #
-#&gt; # The dplyr lag() function breaks how base R's lag() function is supposed to  #
-#&gt; # work, which breaks lag(my_xts). Calls to lag(my_xts) that you type or       #
-#&gt; # source() into this session won't work correctly.                            #
-#&gt; #                                                                             #
-#&gt; # Use stats::lag() to make sure you're not using dplyr::lag(), or you can add #
-#&gt; # conflictRules('dplyr', exclude = 'lag') to your .Rprofile to stop           #
-#&gt; # dplyr from breaking base R's lag() function.                                #
-#&gt; #                                                                             #
-#&gt; # Code in packages is not affected. It's protected by R's namespace mechanism #
-#&gt; # Set `options(xts.warn_dplyr_breaks_lag = FALSE)` to suppress this warning.  #
-#&gt; #                                                                             #
-#&gt; ###############################################################################
-#&gt; 
-#&gt; Attache Paket: 'xts'
-#&gt; 
-#&gt; Die folgenden Objekte sind maskiert von 'package:dplyr':
-#&gt; 
-#&gt;     first, last
-#&gt; 
-#&gt; 
-#&gt; Attache Paket: 'PerformanceAnalytics'
-#&gt; 
-#&gt; Das folgende Objekt ist maskiert 'package:graphics':
-#&gt; 
-#&gt;     legend
-#&gt; 
-#&gt; Lade nötiges Paket: quantmod
-#&gt; Lade nötiges Paket: TTR
-#&gt; Registered S3 method overwritten by 'quantmod':
-#&gt;   method            from
-#&gt;   as.zoo.data.frame zoo</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">library</span>(umap)</span>
-<span id="cb5-3"><a href="#cb5-3"></a></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co"># STOCK PRICES</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>sp_500_prices_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"sp_500_prices_tbl.rds"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># SECTOR INFORMATION</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>sp_500_index_tbl <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">"sp_500_index_tbl.rds"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#Step 1</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>sp_500_daily_returns_tbl <span class="ot">&lt;-</span> sp_500_prices_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb5-13"><a href="#cb5-13"></a>  <span class="fu">select</span>(symbol, date, adjusted) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-14"><a href="#cb5-14"></a>  <span class="fu">filter</span>(date <span class="sc">&gt;=</span> <span class="st">'2018-01-01'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-15"><a href="#cb5-15"></a>  <span class="fu">group_by</span>(symbol) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-16"><a href="#cb5-16"></a>  <span class="fu">mutate</span>(<span class="at">lag =</span> <span class="fu">lag</span>(adjusted)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-17"><a href="#cb5-17"></a>  na.omit <span class="sc">%&gt;%</span> </span>
-<span id="cb5-18"><a href="#cb5-18"></a>  <span class="fu">mutate</span>(<span class="at">pct_return =</span> (adjusted <span class="sc">-</span> lag)<span class="sc">/</span>lag) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-19"><a href="#cb5-19"></a>  <span class="fu">select</span>(symbol, date, pct_return)</span>
-<span id="cb5-20"><a href="#cb5-20"></a></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="co">#Step 2</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a>stock_date_matrix_tbl <span class="ot">&lt;-</span> sp_500_daily_returns_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb5-23"><a href="#cb5-23"></a>  <span class="fu">spread</span>(date, pct_return) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-24"><a href="#cb5-24"></a>  <span class="fu">replace</span>(<span class="fu">is.na</span>(.),<span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-25"><a href="#cb5-25"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb5-26"><a href="#cb5-26"></a></span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="co">#Step 3</span></span>
-<span id="cb5-28"><a href="#cb5-28"></a>kmeans_obj <span class="ot">&lt;-</span> stock_date_matrix_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb5-29"><a href="#cb5-29"></a>  <span class="fu">within</span>(<span class="fu">rm</span>(<span class="st">"symbol"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-30"><a href="#cb5-30"></a>  <span class="fu">kmeans</span>(<span class="at">centers =</span> <span class="dv">4</span>, <span class="at">nstart =</span> <span class="dv">20</span>)</span>
-<span id="cb5-31"><a href="#cb5-31"></a></span>
-<span id="cb5-32"><a href="#cb5-32"></a><span class="co">#Step 4</span></span>
-<span id="cb5-33"><a href="#cb5-33"></a>kmeans_mapper <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">center =</span> <span class="dv">3</span>) {</span>
-<span id="cb5-34"><a href="#cb5-34"></a>  stock_date_matrix_tbl <span class="sc">%&gt;%</span></span>
-<span id="cb5-35"><a href="#cb5-35"></a>    <span class="fu">select</span>(<span class="sc">-</span>symbol) <span class="sc">%&gt;%</span></span>
-<span id="cb5-36"><a href="#cb5-36"></a>    <span class="fu">kmeans</span>(<span class="at">centers =</span> center, <span class="at">nstart =</span> <span class="dv">20</span>)</span>
-<span id="cb5-37"><a href="#cb5-37"></a>}</span>
-<span id="cb5-38"><a href="#cb5-38"></a></span>
-<span id="cb5-39"><a href="#cb5-39"></a>k_means_mapped_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">centers =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-40"><a href="#cb5-40"></a>  <span class="fu">mutate</span>(<span class="at">k_means =</span> centers <span class="sc">%&gt;%</span>  <span class="fu">map</span>(kmeans_mapper)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-41"><a href="#cb5-41"></a>  <span class="fu">mutate</span>(<span class="at">glance =</span> k_means <span class="sc">%&gt;%</span> <span class="fu">map</span>(glance))</span>
-<span id="cb5-42"><a href="#cb5-42"></a>  </span>
-<span id="cb5-43"><a href="#cb5-43"></a>k_means_mapped_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb5-44"><a href="#cb5-44"></a>  <span class="fu">unnest</span>(glance) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-45"><a href="#cb5-45"></a>  <span class="fu">select</span>(centers, tot.withinss) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-46"><a href="#cb5-46"></a>  <span class="co"># Visualization</span></span>
-<span id="cb5-47"><a href="#cb5-47"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(centers, tot.withinss)) <span class="sc">+</span></span>
-<span id="cb5-48"><a href="#cb5-48"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#2DC6D6"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb5-49"><a href="#cb5-49"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#2DC6D6"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb5-50"><a href="#cb5-50"></a>  <span class="co"># Add labels (which are repelled a little)</span></span>
-<span id="cb5-51"><a href="#cb5-51"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> centers), <span class="at">color =</span> <span class="st">"#2DC6D6"</span>) <span class="sc">+</span> </span>
-<span id="cb5-52"><a href="#cb5-52"></a>  </span>
-<span id="cb5-53"><a href="#cb5-53"></a>  <span class="co"># Formatting</span></span>
-<span id="cb5-54"><a href="#cb5-54"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Skree Plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="monthly-income" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="monthly-income"><span class="header-section-number">1</span> Monthly Income</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-2_6e2db3dca2e933b5f5b7acc536782ce5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">select</span>(Attrition, MonthlyIncome) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>#&gt; Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-#&gt; ℹ Please use `linewidth` instead.</code></pre>
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="Challenge1_files/figure-html/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Challenge1_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="Challenge3_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#Step 5</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>umap_results <span class="ot">&lt;-</span> stock_date_matrix_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">select</span>(<span class="sc">-</span>symbol) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">umap</span>()</span>
-<span id="cb7-5"><a href="#cb7-5"></a></span>
-<span id="cb7-6"><a href="#cb7-6"></a>umap_results_tbl <span class="ot">&lt;-</span> umap_results<span class="sc">$</span>layout <span class="sc">%&gt;%</span> </span>
-<span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">as_tibble</span>(<span class="at">.name_repair =</span> <span class="st">"unique"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">set_names</span>(<span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a>  <span class="fu">bind_cols</span>(stock_date_matrix_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(symbol)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; New names:
-#&gt; • `` -&gt; `...1`
-#&gt; • `` -&gt; `...2`</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>umap_results_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y), ) <span class="sc">+</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">theme_tq</span>() <span class="sc">+</span> </span>
-<span id="cb9-5"><a href="#cb9-5"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> symbol), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"UMAP Projection"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We can deduce that those that are leaving are more likely to be the ones with lower income as seen in the upper right plot. Answer: C</p>
+</section>
+<section id="compensation-features" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="compensation-features"><span class="header-section-number">2</span> Compensation Features</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-3_48b50a96dc4112fac0a2466d8535e475">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">select</span>(Attrition, PercentSalaryHike) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>#&gt; Warning: ggrepel: 502 unlabeled data points (too many overlaps). Consider
-#&gt; increasing max.overlaps</code></pre>
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="Challenge1_files/figure-html/unnamed-chunk-1-2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="Challenge1_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="Challenge3_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#Step 6</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>umap_kmeans_results_tbl <span class="ot">&lt;-</span> kmeans_obj <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">augment</span>(stock_date_matrix_tbl) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">select</span>(symbol, .cluster) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">left_join</span>(umap_results_tbl) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">left_join</span>(sp_500_index_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(symbol, company, sector))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>#&gt; Joining with `by = join_by(symbol)`
-#&gt; Joining with `by = join_by(symbol)`</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>umap_kmeans_results_tbl <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(x, y, <span class="at">color =</span> .cluster)) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  </span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="co"># Geometries</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_label_repel</span>(<span class="fu">aes</span>(<span class="at">label =</span> symbol), <span class="at">size =</span> <span class="dv">2</span>, <span class="at">fill =</span> <span class="st">"#282A36"</span>) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a>  </span>
-<span id="cb13-8"><a href="#cb13-8"></a>  <span class="co"># Formatting</span></span>
-<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"#2d72d6"</span>, <span class="st">"#2dc6d6"</span>, <span class="st">"#2dd692"</span>, <span class="st">"#2dd692"</span>)) <span class="sc">+</span> </span>
-<span id="cb13-10"><a href="#cb13-10"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>It is difficult to deduce anything from this plot. Answer: D</p>
+</section>
+<section id="stock-options" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="stock-options"><span class="header-section-number">3</span> Stock Options</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-4_57145d754904c8ffa98be285b14a14ac">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">select</span>(Attrition, StockOptionLevel) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>#&gt; Warning: ggrepel: 493 unlabeled data points (too many overlaps). Consider
-#&gt; increasing max.overlaps</code></pre>
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="Challenge1_files/figure-html/unnamed-chunk-1-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="Challenge1_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></a></p>
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="Challenge3_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
 </figure>
 </div>
 </div>
 </div>
+<p>It is difficult to deduce anything from this plot. Answer: D</p>
+</section>
+<section id="survey-results" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="survey-results"><span class="header-section-number">4</span> Survey Results</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-5_4f191a9ec6fd4441013fd5024874878b">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">select</span>(Attrition, EnvironmentSatisfaction) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-5-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="Challenge3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is difficult to deduce anything from this plot. Although those with higher environment satisfaction may be more inclined to stay. Answer: A</p>
+</section>
+<section id="work-life-balance" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="work-life-balance"><span class="header-section-number">5</span> Work Life Balance</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-6_06ceb7b4758de6946ce72b29bc56ec5d">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">select</span>(Attrition, WorkLifeBalance) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="Challenge3_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is difficult to deduce anything from this plot. Answer: D</p>
+</section>
+<section id="performance-data" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="performance-data"><span class="header-section-number">6</span> Performance Data</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-7_980f6a4b5ddf02f5decf73f9c5097f38">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">select</span>(Attrition, JobInvolvement) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-7-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="Challenge3_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is difficult to deduce anything from this plot. Answer: D</p>
+</section>
+<section id="overtime" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="overtime"><span class="header-section-number">7</span> Overtime</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-8_ed35f26c16f4165f04aacc096f42e0f4">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">select</span>(Attrition, OverTime) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="Challenge3_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is difficult to deduce anything from this plot. Answer: D</p>
+</section>
+<section id="training-and-education" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="training-and-education"><span class="header-section-number">8</span> Training and Education</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-9_39ccbc22150394b4ffd3fb2e4f92768c">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">select</span>(Attrition, TrainingTimesLastYear) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="Challenge3_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is difficult to deduce anything from this plot. Answer: D</p>
+</section>
+<section id="time-based-features" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="time-based-features"><span class="header-section-number">9</span> Time Based Features</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-10_5fe3d42eae5459cdb5941f984a40f721">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">select</span>(Attrition, YearsAtCompany) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="Challenge3_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Those with less years tend to leave or rather those with more years tend to stay. Answer: B</p>
+</section>
+<section id="time-based-features-1" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="time-based-features-1"><span class="header-section-number">10</span> Time Based Features</h2>
+<div class="cell" data-hash="Challenge3_cache/html/unnamed-chunk-11_6cc68c4c13bef0773779dcbe18f90b11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>employee_attrition_tbl <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">select</span>(Attrition, YearsSinceLastPromotion) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="fu">ggpairs</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="Challenge3_files/figure-html/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="Challenge3_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>It is difficult to deduce anything from this plot. Answer: D</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -749,7 +779,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":true,"openEffect":"zoom","closeEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom"});</script>
 
 
 
